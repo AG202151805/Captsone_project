@@ -46,7 +46,6 @@ political_related_words = political_related_words.replace('\n', '')
 sports_related_words = sports_related_words.replace('\n', '')
 
 # creating jaccard similarity functions
-
 def jaccard_similarity(str1, str2):
     a = set(str1.split())
     b = set(str2.split())
@@ -65,7 +64,6 @@ political_score = get_scores(political_related_words,df_1.clean_no_stops.to_list
 professional_score = get_scores(sports_related_words,df_1.clean_no_stops.to_list())
 
 # create a jaccard score dataframe, wtih date, tweet, clean tweet and the topics score
-
 data_scores  = {'Date':df_1.Date.to_list(), 'clean_no_stops':df_1.clean_no_stops.to_list(),
                 'clean_tweet':df_1.clean_tweet.to_list(),
                 'political_score':political_score,'professional_score': professional_score}
@@ -73,7 +71,6 @@ data_scores  = {'Date':df_1.Date.to_list(), 'clean_no_stops':df_1.clean_no_stops
 scores_df_1 = pd.DataFrame(data_scores)
 
 # assign classes based on highest score
-
 def get_classes(l1, l2):
     political = []
     professional = []
@@ -94,12 +91,10 @@ def get_classes(l1, l2):
     return political, professional
 
 # append scores to list
-
 l1 = scores_df_1.political_score.to_list()
 l2 = scores_df_1.professional_score.to_list()
 
 # add category column for professional and political classification
-
 scores_df_1['category'] = np.where(scores_df_1['political_score'] > scores_df_1['professional_score'], 'Political', 'Professional')
 
 # exporting dataset in order to manually code a subset of the Tweets
