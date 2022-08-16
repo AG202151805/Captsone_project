@@ -144,7 +144,6 @@ subset_2['clean_new'] = (subset_2['clean_new'].str.replace('גזענית','גז�
                            .str.replace('גיזענים','גזעני').str.replace('הגיזעניים','גזעני').str.replace('גיזענות','גזעני'))
 
 # sentiment analysis - training the models
-
 def get_feature_vector(train_fit):
     vector = TfidfVectorizer(sublinear_tf=True)
     vector.fit(train_fit)
@@ -276,7 +275,7 @@ df2_rest['clean_new'] = (df2_rest['clean_new'].str.replace('גזענית','גז�
                            .str.replace('גיזענים','גזעני').str.replace('הגיזעניים','גזעני').str.replace('גיזענות','גזעני'))
 
 
-# predictt the sentiment of the Tweets
+# predict the sentiment of the Tweets
 df2_rest_X = tf_vector.transform(np.array(df2_rest.iloc[:, 4].values.astype('U')).ravel())
 
 # apply the whole pipeline to data
