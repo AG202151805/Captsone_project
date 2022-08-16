@@ -145,13 +145,12 @@ subset_1['clean_new'] = (subset_1['clean_new'].str.replace('גזענית','גז�
                            .str.replace('גיזענים','גזעני').str.replace('הגיזעניים','גזעני').str.replace('גיזענות','גזעני'))
 
 
-# sentiment analysis - training the models
+# sentiment analysis - training the model
 
 def get_feature_vector(train_fit):
     vector = TfidfVectorizer(sublinear_tf=True)
     vector.fit(train_fit)
     return vector
-
 
 
 # fitting logistic regression model
@@ -292,7 +291,7 @@ df1_rest.reset_index(inplace=True)
 # remove level_0 column
 df1_rest.drop('level_0', axis=1, inplace=True)
 
-# join the rest dataframe with the pred_rest predictions
+# join the df1_rest dataframe with the df1_pred_rest predictions
 df1_rest_full = df1_rest.join(df1_pred_rest)
 
 # rename sentiment code column
@@ -416,7 +415,6 @@ df1_all_weekly.reset_index(inplace=True)
 df1_all_weekly.rename(columns = {'index':'Date'}, inplace = True)
 
 # Creating transposed daily and monthly dataframe
-
 df1_daily_final = df1_all_t.transpose().reset_index()
 df1_daily_final.set_index('Date', inplace=True)
 df1_daily_final.index = pd.to_datetime(df1_daily_final.index)
