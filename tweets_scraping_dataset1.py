@@ -21,6 +21,9 @@ import gensim
 import gensim.utils
 from gensim.utils import simple_preprocess
 
+# assisted by this tutorial
+# https://towardsdatascience.com/an-extensive-guide-to-collecting-tweets-from-twitter-api-v2-for-academic-research-using-python-3-518fcb71df2a
+
 os.environ['TOKEN'] = 'Bearer Token'
 
 # Now, we will create our auth() function, which retrieves the token from the environment.
